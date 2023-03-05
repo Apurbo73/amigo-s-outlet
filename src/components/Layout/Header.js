@@ -4,8 +4,13 @@ import { HiShoppingCart } from "react-icons/hi";
 import { useAuth } from "../context/auth";
 import toast from "react-hot-toast";
 import SearchInput from "../Form/SearchInput";
+import useCategory from "../../hooks/useCategory";
+import { useCart } from "../context/cart";
+import { Badge } from "antd";
 const Header = () => {
   const [auth, setAuth] = useAuth();
+  const categories = useCategory();
+  const [cart] = useCart();
   const handleLogOut = () => {
     setAuth({
       ...auth,
@@ -34,7 +39,7 @@ const Header = () => {
             <div style={{ display: "flex" }}>
               <Link to="/" className="navbar-brand" href="#">
                 <HiShoppingCart /> Amigo's
-                <span style={{ color: "orange" }}>Outlet</span>
+                <span style={{ color: "orange", marginLeft:10 }}>Outlet</span>
               </Link>
               <Link to="/" className="navbar-brand" href="#">
                 <span style={{ color: "teal" }}>Sylheti</span> Brand
@@ -43,7 +48,6 @@ const Header = () => {
             </div>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="m-1">
-              
                 <SearchInput></SearchInput>
               </li>
               <li className="nav-item">
@@ -51,11 +55,31 @@ const Header = () => {
                   Home
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink to="/categories" className="nav-link">
+
+              {/* setting categories dropdown button: */}
+              <li className="nav-item dropdown">
+                <Link
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
                   Categories
-                </NavLink>
+                </Link>
+
+                {categories?.map((c) => (
+                  <ul className="dropdown-menu">
+                    <li>
+                      <Link className="dropdown-item" href="#">
+                        {c.name}
+                      </Link>
+                      <Link>Other categories not coming</Link>
+                    </li>
+                  </ul>
+                ))}
               </li>
+
               <li className="nav-item"></li>
 
               {
@@ -114,10 +138,12 @@ const Header = () => {
                 )
               }
 
-              <li className="nav-item ">
-                <NavLink to="/cart" className="nav-link">
-                  <HiShoppingCart /> Cart (0)
-                </NavLink>
+              <li className="nav-item mx-2">
+                <Badge count={cart?.length} showZero>
+                  <NavLink to="/cart" className="nav-link">
+                    <HiShoppingCart /> Cart 
+                  </NavLink>
+                </Badge>
               </li>
 
               <li className="nav-item"></li>

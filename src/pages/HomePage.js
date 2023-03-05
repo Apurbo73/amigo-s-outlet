@@ -9,7 +9,9 @@ import { Link } from "react-router-dom";
 import { Checkbox, Radio } from "antd";
 import { Prices } from "./../components/Prices";
 import { useNavigate } from "react-router-dom";
-
+import { useCart } from "../components/context/cart";
+import { toast } from "react-hot-toast";
+import Badge from "antd";
 const HomePage = () => {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
@@ -19,6 +21,7 @@ const HomePage = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [cart, setCart] = useCart();
 
   const url = "https://www.linkpicture.com/q/LPic64025723758b82099065225.jpg";
   const url1 = "https://www.linkpicture.com/q/nodata";
@@ -237,7 +240,16 @@ const HomePage = () => {
                     >
                       See detail
                     </button>
-                    <button class="btn btn-primary m-3">Add to cart</button>
+                    <button
+                      class="btn btn-primary m-3"
+                      onClick={() => {
+                        setCart([...cart, p]);
+                        toast.success("item added to cart");
+                      }}
+                    >
+                      
+                      Add to cart
+                    </button>
                   </div>
                 </div>
               ))}
