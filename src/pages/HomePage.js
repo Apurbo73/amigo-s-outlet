@@ -3,6 +3,14 @@ import Layout from "../components/Layout";
 import image1 from "../../../client/src/images/newheadphone.jpg";
 import image2 from "../../../client/src/images/watchbanner.png";
 import image3 from "../../../client/src/images/pizzabannaer.png";
+import image4 from "../../../client/src/images/fashion.png";
+import image5 from "../../../client/src/images/sofa.png";
+import image6 from "../../../client/src/images/gadget.jpg";
+import image7 from "../../../client/src/images/clothing.png";
+import image8 from "../../../client/src/images/watches.png";
+import image9 from "../../../client/src/images/parlor.png";
+import image10 from "../../../client/src/images/shopping.png";
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -142,6 +150,15 @@ const HomePage = () => {
                 alt="..."
               />
             </div>
+
+            <div className="carousel-item active">
+              <img
+                style={{ height: 400 }}
+                src={image10}
+                className="d-block w-100 "
+                alt="..."
+              />
+            </div>
             <div className="carousel-item">
               <img
                 style={{ height: 400 }}
@@ -207,11 +224,104 @@ const HomePage = () => {
               </Radio.Group>
             </div>
             <button
-              className="btn btn-success w-100 mt-3"
+              className="btn btn-success w-100 mt-3 mb-5"
               onClick={() => window.location.reload()}
             >
               Reset Search
             </button>
+
+            {/* carousel elements: */}
+            <h6 style={{ fontWeight: 600 }} className="text-center design ">
+              Recommended Products
+            </h6>
+            <hr />
+            <div
+              id="carouselExampleControls"
+              className="carousel slide mt-5"
+              data-bs-ride="carousel"
+            >
+              <div className="carousel-inner">
+                <div className="carousel-item active">
+                  <img src={image4} className="d-block w-100" alt="..." />
+                  <h6 className="text-center">Fashion</h6>
+                </div>
+                <div className="carousel-item">
+                  <img src={image5} className="d-block w-100" alt="..." />
+                  <h6 className="text-center">Home & decor</h6>
+                </div>
+                <div className="carousel-item">
+                  <img src={image9} className="d-block w-100" alt="..." />
+                  <h6 className="text-center">Beauty products</h6>
+                </div>
+                <div className="carousel-item">
+                  <img src={image6} className="d-block w-100" alt="..." />
+                  <h6 className="text-center">Gadgets</h6>
+                </div>
+                <div className="carousel-item">
+                  <img src={image7} className="d-block w-100" alt="..." />
+                  <h6 className="text-center">Cloth & butique</h6>
+                </div>{" "}
+                <div className="carousel-item">
+                  <img src={image8} className="d-block w-100" alt="..." />
+                  <h6 className="text-center">Smart watches</h6>
+                </div>
+              </div>
+              <button
+                className="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev"
+              >
+                <span
+                  className="carousel-control-prev-icon"
+                  aria-hidden="true"
+                />
+                <span className="visually-hidden">Previous</span>
+              </button>
+              <button
+                className="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselExampleControls"
+                data-bs-slide="next"
+              >
+                <span
+                  className="carousel-control-next-icon"
+                  aria-hidden="true"
+                />
+                <span className="visually-hidden">Next</span>
+              </button>
+            </div>
+            {/* collups component: */}
+            <div>
+              <p>
+                <button
+                  className="btn btn-primary mt-3 w-100 d-none d-sm-block"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseWidthExample"
+                  aria-expanded="false"
+                  aria-controls="collapseWidthExample"
+                >
+                  Call For support
+                </button>
+              </p>
+              <div style={{ minHeight: 120 }}>
+                <div
+                  className="collapse collapse-horizontal"
+                  id="collapseWidthExample"
+                >
+                  <div className="card card-body d-none d-sm-block" style={{ width: 200 ,fontSize:13}}>
+                  Amigo's Outlet Limited. <br />
+                  <hr />
+                  Majortila, Sylhet, Bangladesh. <br />
+                  <hr />
+                  Email: amigos@gmail.com. <br />
+                  <hr />
+                  Phone: 01774573076
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="col-md-9">
@@ -244,10 +354,15 @@ const HomePage = () => {
                       class="btn btn-primary m-3"
                       onClick={() => {
                         setCart([...cart, p]);
+
+                        //saving the cart state in local storage so that it does not go away after reload:
+                        localStorage.setItem(
+                          "cart",
+                          JSON.stringify([...cart, p])
+                        );
                         toast.success("item added to cart");
                       }}
                     >
-                      
                       Add to cart
                     </button>
                   </div>

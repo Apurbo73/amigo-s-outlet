@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <div
       style={{ minHeight: "40vh" }}
-      className="footer  text-light p-3 text-center"
+      className="footer  text-light p-3 text-center mt-5"
     >
       <div>
         <div className="row">

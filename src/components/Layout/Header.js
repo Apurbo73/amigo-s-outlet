@@ -22,7 +22,7 @@ const Header = () => {
   };
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light  fixed-top">
         <div className="container-fluid">
           <button
             className="navbar-toggler"
@@ -37,11 +37,11 @@ const Header = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <div style={{ display: "flex" }}>
-              <Link to="/" className="navbar-brand" href="#">
+              <Link to="/" className="navbar-brand" href="#"> 
                 <HiShoppingCart /> Amigo's
                 <span style={{ color: "orange", marginLeft:10 }}>Outlet</span>
               </Link>
-              <Link to="/" className="navbar-brand" href="#">
+              <Link to="/" className="navbar-brand sylheti-brand" href="#">
                 <span style={{ color: "teal" }}>Sylheti</span> Brand
                 <HiShoppingCart />
               </Link>

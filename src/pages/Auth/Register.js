@@ -41,13 +41,13 @@ const Register = () => {
 
   return (
     <Layout title={"Register To Amigo's Outlet"}>
-      <div className="register m-5">
-        <div className="d-none d-sm-none  d-md-block m-5">
+      <div className="register mt-5">
+        <div className="d-none d-sm-none  d-md-block m-5 mt-5">
           <img src={image} alt="" />
         </div>
 
         <div>
-          <div className="">
+          <div className="mt-5">
             <h1>Register Yourself !!</h1>
 
             <form onSubmit={handleSubmit}>
