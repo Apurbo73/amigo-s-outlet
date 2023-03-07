@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Layout from "../../components/Layout";
-import image from "../../images/universe.jpg";
+import signup from "../../images/signup.jpg";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import image from "../../images/login.jpg";
+
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -13,7 +15,6 @@ const Register = () => {
   const [answer, setAnswer] = useState("");
 
   const navigate = useNavigate();
-
   // Handling form default activities
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,11 +25,13 @@ const Register = () => {
         password,
         phone,
         address,
-        answer,
+        answer
       });
 
       if (res.data.success) {
-        toast.success(res.data.message);
+        toast.success(
+          "SuccessFully Registered. Please check You Mail To Verify"
+        );
         navigate("/login");
       } else {
         toast.error(res.data.message);
@@ -41,103 +44,107 @@ const Register = () => {
 
   return (
     <Layout title={"Register To Amigo's Outlet"}>
-      <div className="register mt-5">
-        <div className="d-none d-sm-none  d-md-block m-5 mt-5">
-          <img src={image} alt="" />
-        </div>
+      <div className="mt-5 " style={{ backgroundColor: "#FEF5E2" }}>
+        hi
+        <div className="register mt-5 w-50 mx-auto shadow-lg p-3 mb-5 bg-white rounded">
+          <div className="d-none d-sm-none  d-md-block  mt-5">
+            <img className="h-100 " src={image} alt="" />
+          </div>
 
-        <div>
-          <div className="mt-5">
-            <h1>Register Yourself !!</h1>
+          <div>
+            <div style={{ backgroundColor: "#ffff" }} className="mt-5 p-3">
+              <h4 className="text-center">Register Yourself !!</h4>
 
-            <form onSubmit={handleSubmit}>
-              <div className="mb-3">
-                <input
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  type="text"
-                  className="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                  placeholder="Enter your name"
-                  required
-                />
-              </div>
-              <div className="mb-3">
-                <input
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  type="email"
-                  className="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                  placeholder="Enter your email"
-                  required
-                />
-              </div>
-              <div className="mb-3">
-                <input
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  type="password"
-                  className="form-control"
-                  id="exampleInputPassword1"
-                  placeholder="Enter your password"
-                  required
-                />
-              </div>
-              <div className="mb-3">
-                <input
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  type="text"
-                  className="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                  placeholder="Enter your phone number"
-                  required
-                />
-              </div>
-              <div className="mb-3">
-                <input
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                  type="text"
-                  className="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                  placeholder="Enter your address"
-                  required
-                />
-              </div>
-              <div className="mb-3">
-                <input
-                  value={answer}
-                  onChange={(e) => setAnswer(e.target.value)}
-                  type="text"
-                  className="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedbaty="emailHelp"
-                  placeholder="What is your favourite place"
-                  required
-                />
-              </div>
+              <form onSubmit={handleSubmit}>
+                <div className="mb-1 ">
+                  <input
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    type="text"
+                    className="form-control"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter your name"
+                    required
+                  />
+                </div>
+                <div className="mb-1">
+                  <input
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    type="email"
+                    className="form-control"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter your email"
+                    required
+                  />
+                </div>
+                <div className="mb-1">
+                  <input
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    type="password"
+                    className="form-control"
+                    id="exampleInputPassword1"
+                    placeholder="Enter your password"
+                    required
+                  />
+                </div>
+                <div className="mb-1">
+                  <input
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    type="text"
+                    className="form-control"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter your phone number"
+                    required
+                  />
+                </div>
+                <div className="mb-1">
+                  <input
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    type="text"
+                    className="form-control"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter your address"
+                    required
+                  />
+                </div>
+                <div className="mb-1">
+                  <input
+                    value={answer}
+                    onChange={(e) => setAnswer(e.target.value)}
+                    type="text"
+                    className="form-control"
+                    id="exampleInputEmail1"
+                    aria-describedbaty="emailHelp"
+                    placeholder="What is your favourite place"
+                    required
+                  />
+                </div>
 
-              <div className="mb-3 form-check"></div>
-              <button type="submit" className="btn btn-primary w-100">
-                Submit
-              </button>
-              <p style={{ textAlign: "center" }}>Or</p>
-              <button type="submit" className="btn btn-danger w-100">
-                Continue With Google
-              </button>
-              <Link
-                to="/login"
-                style={{ textDecoration: "none", textAlign: "center" }}
-              >
-                Already Registered? Log in here
-              </Link>
-            </form>
+                <div className="mb-3 form-check"></div>
+                <button type="submit" className="btn btn-primary w-100">
+                  Submit
+                </button>
+                <p style={{ textAlign: "center" }}>Or</p>
+                <button type="submit" className="btn btn-danger w-100">
+                  Continue With Google
+                </button>
+                <Link
+                  to="/login"
+                  className="text-center"
+                  style={{ textDecoration: "none", textAlign: "center" }}
+                >
+                  Already Registered? Log in here
+                </Link>
+              </form>
+            </div>
           </div>
         </div>
       </div>

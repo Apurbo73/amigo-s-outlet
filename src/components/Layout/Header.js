@@ -37,9 +37,9 @@ const Header = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <div style={{ display: "flex" }}>
-              <Link to="/" className="navbar-brand" href="#"> 
+              <Link to="/" className="navbar-brand" href="#">
                 <HiShoppingCart /> Amigo's
-                <span style={{ color: "orange", marginLeft:10 }}>Outlet</span>
+                <span style={{ color: "orange", marginLeft: 10 }}>Outlet</span>
               </Link>
               <Link to="/" className="navbar-brand sylheti-brand" href="#">
                 <span style={{ color: "teal" }}>Sylheti</span> Brand
@@ -56,28 +56,46 @@ const Header = () => {
                 </NavLink>
               </li>
 
-              {/* setting categories dropdown button: */}
               <li className="nav-item dropdown">
-                <Link
+                <a
                   className="nav-link dropdown-toggle"
                   href="#"
+                  id="navbarScrollingDropdown"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Categories
-                </Link>
+                  User Manual
+                </a>
+                <ul
+                  className="dropdown-menu"
+                  aria-labelledby="navbarScrollingDropdown"
+                >
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Products
+                    </a>
+                  </li>
+                  <li>
+                    <hr className="dropdown-divider" />
+                  </li>
 
-                {categories?.map((c) => (
-                  <ul className="dropdown-menu">
-                    <li>
-                      <Link className="dropdown-item" href="#">
-                        {c.name}
-                      </Link>
-                      <Link>Other categories not coming</Link>
-                    </li>
-                  </ul>
-                ))}
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Payments
+                    </a>
+                  </li>
+                  <li>
+                    <hr className="dropdown-divider" />
+                  </li>
+               
+
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      How to use
+                    </a>
+                  </li>
+                </ul>
               </li>
 
               <li className="nav-item"></li>
@@ -138,10 +156,10 @@ const Header = () => {
                 )
               }
 
-              <li className="nav-item mx-2">
+              <li  className="nav-item mx-2 mt-2">
                 <Badge count={cart?.length} showZero>
                   <NavLink to="/cart" className="nav-link">
-                    <HiShoppingCart /> Cart 
+                    <HiShoppingCart /> <span style={{fontSize:16, color:'black'}}>Cart</span>
                   </NavLink>
                 </Badge>
               </li>

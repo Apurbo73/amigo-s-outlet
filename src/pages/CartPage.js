@@ -78,6 +78,18 @@ const CartPage = () => {
     }
   };
 
+  // handling plus button of adding products:
+
+  // const plus = document.querySelector(".plus"),
+  //   minus = document.querySelector(".minus"),
+  //   num = document.querySelector(".num");
+
+  // let a = 1;
+  // plus.addEventListener("click", () => {
+  //   a++;
+  //   console.log(a);
+  // });
+
   return (
     <Layout>
       <div className="container mt-5">
@@ -125,18 +137,30 @@ const CartPage = () => {
                     className="card-img-top h-80"
                     alt=""
                   />
+                  <div className="mb-1 mt-1 text-center">
+                    <div className="btn btn-outline-primary m-1 minus">-</div>
+                    <div className="btn btn-outline-primary m-1 num">0</div>
+                    <div className="btn btn-outline-primary m-1 plus">+</div>
+                  </div>
                 </div>
                 <div className="col-md-8">
                   <h6 className="card-title mt-5">{p.name}</h6>
-                  <h6 className="card-title mt-5">
+                  <h6
+                    className="card-title mt-3
+                  "
+                  >
                     {p.description.substring(0, 50)}...
                   </h6>
-                  <h6 className="card-title mt-5">Price: {p.price} Taka</h6>
-                  <div
-                    className="btn btn-warning mt-2"
-                    onClick={() => removeFromCart(p._id)}
-                  >
-                    Remove
+                  <h6 className="card-title mt-1 mb-3">
+                    Price: {p.price} Taka
+                  </h6>
+                  <div className="">
+                    <div
+                      className="btn btn-warning "
+                      onClick={() => removeFromCart(p._id)}
+                    >
+                      Remove
+                    </div>
                   </div>
                 </div>
               </div>

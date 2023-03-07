@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Layout from "../../components/Layout";
-import image from "../../images/universe.jpg";
+import image from "../../images/login.jpg";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import { Link, useNavigate, useLocation } from "react-router-dom";
@@ -47,17 +47,22 @@ const Login = () => {
   };
   return (
     <Layout title={"Login To Amigo's Outlet"}>
-      <div className="register m-5">
-        <div className="d-none d-sm-none  d-md-block m-5">
-          <img src={image} alt="" />
+
+
+
+  <div style={{backgroundColor:'#FEF5E2'}} className="mt-5  h-full">
+    hi
+  <div className="register mt-5 mb-5 shadow-lg p-3 mb-5 bg-white rounded w-50 mx-auto border-rounded ">
+        <div className="d-none d-sm-none mt-5 mb-5  d-md-block ">
+          <img className="h-100 " src={image} alt="" />
         </div>
 
         <div>
-          <div className="m-5">
-            <h1>Login To Amigo's Outlet !!</h1>
+          <div style={{backgroundColor:'#FFFFFF'}} className="m-1 mt-5 ">
+            <h3 className="text-center mt-5">Login To Amigo's Outlet !!</h3>
 
             <form onSubmit={handleSubmit}>
-              <div className="mb-3">
+              <div className="mb-1">
                 <input
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -70,7 +75,7 @@ const Login = () => {
                 />
               </div>
 
-              <div className="mb-3">
+              <div className="">
                 <input
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -83,12 +88,12 @@ const Login = () => {
               </div>
 
               <div className="mb-3 form-check"></div>
-              <button type="submit" className="btn btn-primary w-100">
+              <button type="submit" className="btn btn-primary w-100 mb-3">
                 Submit
               </button>
               <button
                 type="button"
-                className="btn btn-warning w-100"
+                className="btn btn-outline-success w-100"
                 onClick={() => {
                   navigate("/forgot-password");
                 }}
@@ -96,13 +101,14 @@ const Login = () => {
                 Forgot Password?
               </button>
               <p style={{ textAlign: "center" }}>Or</p>
-              <button type="submit" className="btn btn-danger w-100">
+              <button type="submit" className="btn btn-warning w-100">
                 Continue With Google
               </button>
 
               <Link
                 to="/register"
-                style={{ textDecoration: "none", textAlign: "center" }}
+                className="text-center"
+                style={{ textDecoration: "none",  }}
               >
                 New to Amigo's Outlet? Register here
               </Link>
@@ -110,6 +116,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+  </div>
     </Layout>
   );
 };

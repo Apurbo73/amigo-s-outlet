@@ -134,7 +134,8 @@ const HomePage = () => {
   }, [page]);
   return (
     <Layout title={"All Products- Shop Now"}>
-      <div>
+    <div style={{backgroundColor:'#FEF5E2'}}>
+    <div>
         {/* carousel elements: */}
         <div
           id="carouselExampleControls"
@@ -198,8 +199,8 @@ const HomePage = () => {
 
         {/* home design for products starting here: */}
         <div className="row mt-4 ">
-          <div className="col-md-2 container">
-            <h5 className="text-center">Search by Category</h5>
+          <div className="col-md-2 container shadow-lg  mb-5 bg-white">
+            <h5 className="text-center mt-3">Search by Category</h5>
 
             <div className="d-flex flex-column border p-2">
               {categories?.map((c) => (
@@ -260,7 +261,7 @@ const HomePage = () => {
                 <div className="carousel-item">
                   <img src={image7} className="d-block w-100" alt="..." />
                   <h6 className="text-center">Cloth & butique</h6>
-                </div>{" "}
+                </div>
                 <div className="carousel-item">
                   <img src={image8} className="d-block w-100" alt="..." />
                   <h6 className="text-center">Smart watches</h6>
@@ -310,12 +311,12 @@ const HomePage = () => {
                   className="collapse collapse-horizontal"
                   id="collapseWidthExample"
                 >
-                  <div className="card card-body d-none d-sm-block" style={{ width: 200 ,fontSize:13}}>
+                  <div className="card card-body d-none d-sm-block" style={{ width: 250 ,fontSize:13,marginBottom:20}}>
                   Amigo's Outlet Limited. <br />
                   <hr />
                   Majortila, Sylhet, Bangladesh. <br />
                   <hr />
-                  Email: amigos@gmail.com. <br />
+                  Email: amigosoutlet1@gmail.com <br />
                   <hr />
                   Phone: 01774573076
                   </div>
@@ -324,15 +325,15 @@ const HomePage = () => {
             </div>
           </div>
 
-          <div className="col-md-9">
+          <div className="col-md-9 ">
             {/* {JSON.stringify(radio, null, 4)} */}
-            <h1 className="text-center">All Products</h1>
-            <div className="d-flex flex-wrap mb-5">
+            {/* <h1 className="text-center">All Products</h1> */}
+            <div className="d-flex flex-wrap mb-5 ">
               {products?.map((p) => (
-                <div className="card m-2 text-dark" style={{ width: "18rem" }}>
+                <div className="card m-2 text-dark " style={{ width: "18rem" }}>
                   <img
                     src={`/api/v1/product/product-photo/${p._id}`}
-                    className="card-img-top"
+                    className="card-img-top h-50"
                     alt=""
                   />
                   <div className="card-body">
@@ -385,6 +386,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+    </div>
     </Layout>
   );
 };
