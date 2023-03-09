@@ -92,139 +92,145 @@ const CartPage = () => {
 
   return (
     <Layout>
-      <div className="container mt-5">
-        <div className="row mt-5">
-          <div className="col-md-12">
-            <h1 className="text-center p-2 mb-2 mt-5 hrtag">
-              {`Hi.. ${auth?.token && auth?.user?.name}`}
-            </h1>
-            {/* checking cart state */}
-            <h4 className="text-center p-2 mb-2 mt-5">
-              {cart?.length > 0 ? (
-                `You have ${cart.length} items in your cart
+      <div style={{ backgroundColor: "#FEF5E2" }}>
+        <div className="container mt-5">
+          <div className="row mt-5">
+            <div className="col-md-12">
+              <h1 className="text-center p-2 mb-2 mt-5 hrtag">
+                {`Hi.. ${auth?.token && auth?.user?.name}`}
+              </h1>
+              {/* checking cart state */}
+              <h4 className="text-center p-2 mb-2 mt-5">
+                {cart?.length > 0 ? (
+                  `You have ${cart.length} items in your cart
                ${auth?.token ? " " : "Please login to checkout"}`
-              ) : (
-                <div>
-                  <div className="card w-50  " style={{ width: "18rem" }}>
-                    {/* <img
+                ) : (
+                  <div>
+                    <div className="card w-50  " style={{ width: "18rem" }}>
+                      {/* <img
                       style={{ height: 400 }}
                       src={image}
                       className="card-img-top "
                       alt="..."
                     /> */}
-                    <div className="card-body">
-                      <p className="card-text">
-                        Your Cart is Empty. Add Something!! <br />
-                        Amigo's Outlet Limited
-                      </p>
-                      <Link to="/" className="btn btn-primary">
-                        Explore the best for you...
-                      </Link>
+                      <div className="card-body">
+                        <p className="card-text">
+                          Your Cart is Empty. Add Something!! <br />
+                          Amigo's Outlet Limited
+                        </p>
+                        <Link to="/" className="btn btn-primary">
+                          Explore the best for you...
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
-            </h4>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-8  mb-5">
-            {cart?.map((p) => (
-              <div className="row ">
-                <div className="col-md-4 ">
-                  <img
-                    src={`/api/v1/product/product-photo/${p._id}`}
-                    className="card-img-top h-80"
-                    alt=""
-                  />
-                  <div className="mb-1 mt-1 text-center">
-                    <div className="btn btn-outline-primary m-1 minus">-</div>
-                    <div className="btn btn-outline-primary m-1 num">0</div>
-                    <div className="btn btn-outline-primary m-1 plus">+</div>
-                  </div>
-                </div>
-                <div className="col-md-8">
-                  <h6 className="card-title mt-5">{p.name}</h6>
-                  <h6
-                    className="card-title mt-3
-                  "
-                  >
-                    {p.description.substring(0, 50)}...
-                  </h6>
-                  <h6 className="card-title mt-1 mb-3">
-                    Price: {p.price} Taka
-                  </h6>
-                  <div className="">
-                    <div
-                      className="btn btn-warning "
-                      onClick={() => removeFromCart(p._id)}
-                    >
-                      Remove
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="col-md-4 ">
-            <h2 className="cart-summary text-center">Cart Summary</h2>
-            <p className="text-center">Total | Checkout | Payment</p>
-            <hr />
-            <h4 className="text-center">Total : {totalPrice()} Taka</h4>
-            <div className="mb-3">
-              {auth?.token ? (
-                <button className="btn btn-outline-success w-100">
-                  You are ready to proceed
-                </button>
-              ) : (
-                <button
-                  className="btn btn-outline-warning w-100"
-                  onClick={() =>
-                    navigate("/login", {
-                      state: "/cart"
-                    })
-                  }
-                >
-                  Please Log In
-                </button>
-              )}
+                )}
+              </h4>
             </div>
+          </div>
+          <div className="row mb-5">
+            <div className="col-md-8  mb-5 ">
+              {cart?.map((p) => (
+                <div className="row shadow-lg p-3 w-75 mb-5 bg-white rounded">
+                  <div className="col-md-4 ">
+                    <img
+                      src={`/api/v1/product/product-photo/${p._id}`}
+                      className="card-img-top h-80"
+                      alt=""
+                    />
+                    <div className="mb-1 mt-1 text-center">
+                      <div className="btn btn-outline-primary m-1 minus">-</div>
+                      <div className="btn btn-outline-primary m-1 num">0</div>
+                      <div className="btn btn-outline-primary m-1 plus">+</div>
+                    </div>
+                  </div>
+                  <div className="col-md-8">
+                    <h6 className="card-title mt-5">{p.name}</h6>
+                    <h6
+                      className="card-title mt-3
+                  "
+                    >
+                      {p.description.substring(0, 50)}...
+                    </h6>
+                    <h6 className="card-title mt-1 mb-3">
+                      Price: {p.price} Taka
+                    </h6>
+                    <div className="">
+                      <div
+                        className="btn btn-warning "
+                        onClick={() => removeFromCart(p._id)}
+                      >
+                        Remove
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="col-md-4  p-4">
+              <h2 className="cart-summary text-center">Cart Summary</h2>
+              <p className="text-center">Total | Checkout | Payment</p>
+              <hr />
+              <h4 className="text-center">Total : {totalPrice()} Taka</h4>
+              <div className="mb-3">
+                {auth?.token ? (
+                  <button className="btn btn-outline-success w-100">
+                    You are ready to proceed
+                  </button>
+                ) : (
+                  <button
+                    className="btn btn-outline-warning w-100"
+                    onClick={() =>
+                      navigate("/login", {
+                        state: "/cart"
+                      })
+                    }
+                  >
+                    Please Log In
+                  </button>
+                )}
+              </div>
 
-            <div className="mt-2">
-              {!clientToken || !auth?.token || !cart?.length ? (
-                " "
-              ) : (
-                <>
-                  <DropIn
-                    options={{
-                      authorization: clientToken,
-                      paypal: {
-                        flow: "vault"
-                      }
-                    }}
-                    onInstance={(instance) => setInstance(instance)}
-                  ></DropIn>
-                  {/* <button
+              <div className="mt-2">
+                {!clientToken || !auth?.token || !cart?.length ? (
+                  " "
+                ) : (
+                  <>
+                    <DropIn
+                      options={{
+                        authorization: clientToken,
+                        paypal: {
+                          flow: "vault"
+                        }
+                      }}
+                      onInstance={(instance) => setInstance(instance)}
+                    ></DropIn>
+                    {/* <button
                     className="btn btn-primary w-100"
                     onClick={handlePayment}
                     disabled={loading || !instance}
                   >
                     {loading ? "Processing....." : "Make payment!!"}
                   </button> */}
-                  <button
-                    className="btn btn-primary w-100"
-                    onClick={handlePayment}
-                    disabled={loading || !instance || !auth?.user?.address}
-                  >
-                    {loading ? "Processing ...." : "Make Payment"}
-                  </button>
-                </>
-              )}
-            </div>
+                    <button
+                      className="btn btn-primary w-100"
+                      onClick={handlePayment}
+                      disabled={loading || !instance || !auth?.user?.address}
+                    >
+                      {loading ? "Processing ...." : "Make Payment"}
+                    </button>
+                  </>
+                )}
+              </div>
 
-            <button className="w-100 btn btn-danger mx-auto mt-2">
-              Thanks for being with Amigo's Outlet
-            </button>
+              <button className="w-100 btn btn-danger mx-auto mt-2">
+                {`Thanks  for your interest ${
+                  auth?.token && auth?.user?.name
+                } `}
+                <p> Amigo's Outlet Limited!</p>
+                <hr />
+              </button>
+            </div>
           </div>
         </div>
       </div>

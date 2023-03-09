@@ -3,10 +3,14 @@ import Layout from "./../components/Layout";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useCart } from "../components/context/cart";
+import { toast } from "react-hot-toast";
 const ProductDetails = () => {
   const params = useParams();
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
+  const [cart, setCart] = useCart();
+
   //get product:
   const getProduct = async () => {
     try {
@@ -54,14 +58,16 @@ const ProductDetails = () => {
           <h6>Description: {product.description}</h6>
           <h6>Category: {product.category?.name}</h6>
           <h6>Price: {product.price} Taka</h6>
-          <button class="btn btn-primary w-100 mt-3">Add to cart</button>
+          <button class="btn btn-primary w-100 mt-3" >Add to cart</button>
         </div>
       </div>
       <hr />
       <div className="row container">
         <h1>Similar Products</h1>
-    {/* checking if any similar product is available or not */}
-        {relatedProducts.length < 1 && <p className="text-center">No Similar Product Available</p>}
+        {/* checking if any similar product is available or not */}
+        {relatedProducts.length < 1 && (
+          <p className="text-center">No Similar Product Available</p>
+        )}
         <div className="d-flex flex-wrap mb-5">
           {relatedProducts?.map((p) => (
             <div className="card m-2 text-dark" style={{ width: "18rem" }}>
@@ -77,7 +83,18 @@ const ProductDetails = () => {
                 <p className="card-text">{p.price} Taka</p>
               </div>
               <div className="">
-                <button class="btn btn-primary m-3">Add to cart</button>
+                <button
+                  class="btn btn-primary m-3"
+                  onClick={() => {
+                    setCart([...cart, p]);
+
+                    //saving the cart state in local storage so that it does not go away after reload:
+                    localStorage.setItem("cart", JSON.stringify([...cart, p]));
+                    toast.success("item added to cart");
+                  }}
+                >
+                  Add to cart
+                </button>
               </div>
             </div>
           ))}

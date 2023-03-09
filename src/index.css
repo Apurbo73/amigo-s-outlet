@@ -48,7 +48,7 @@
   text-transform: uppercase;
 }
 
-.cart-summary, .sylheti-brand,.hrtag, .design{
+.cart-summary, .sylheti-brand,.hrtag, .design, .ptag{
   /* padding: 64px; */
   background: linear-gradient(to right, hsl(0, 0%, 50%) 0, hsl(194, 94%, 65%) 10%, hsl(0, 0%, 30%) 20%);
   -webkit-background-clip: text;
@@ -65,4 +65,55 @@
   100% {
     background-position: 600px;
   }
+}
+
+
+ /* animation bounce to right: */
+ .animated{
+  font: 14px ;
+    display: inline-block;
+    padding: 1em 2em;
+    text-align: center;
+    color: black;
+    background: red; /* default color */
+    border-radius: 10px;
+    /* "to left" / "to right" - affects initial color */
+    background: linear-gradient(to left, #d0f78a 50%, #f5e725 50%) right;
+    background-size: 200%;
+    transition: .5s ease-out;
+ }
+ .animated:hover {
+  background-position: left;
+}
+
+/* //category page button */
+.button-animation{
+  font: 14px ;
+  display: inline-block;
+  padding: 1em 2em;
+  text-align: center;
+  color: black;
+  background: red; /* default color */
+  border-radius: 10px;
+  /* "to left" / "to right" - affects initial color */
+  background: linear-gradient(to left, #d0f78a 50%, #3de2f8 50%) right;
+  background-size: 200%;
+  transition: .5s ease-out;
+}
+
+
+.button-animation:hover {
+  background-position: left;
+}
+
+/* product card design */
+
+.myProductCard img:hover{
+  transform: scale(.8);
+  -webkit-transform: scale(0.8);
+  -ms-transform: scale(1.02);
+  opacity: .7;
+  filter: gray;
+  -webkit-filter: grayscale(1);
+  -webkit-transition: all .4s ease-in-out
 }

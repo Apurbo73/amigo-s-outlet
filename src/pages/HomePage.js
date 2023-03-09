@@ -10,6 +10,11 @@ import image7 from "../../../client/src/images/clothing.png";
 import image8 from "../../../client/src/images/watches.png";
 import image9 from "../../../client/src/images/parlor.png";
 import image10 from "../../../client/src/images/shopping.png";
+import image11 from "../../../client/src/images/image11.png";
+import image12 from "../../../client/src/images/iphone.png";
+import image13 from "../../../client/src/images/sWatch.png";
+import image14 from "../../../client/src/images/image11.png";
+import image15 from "../../../client/src/images/image11.png";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -20,6 +25,7 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from "../components/context/cart";
 import { toast } from "react-hot-toast";
 import Badge from "antd";
+import useCategory from "../hooks/useCategory";
 const HomePage = () => {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
@@ -33,7 +39,23 @@ const HomePage = () => {
 
   const url = "https://www.linkpicture.com/q/LPic64025723758b82099065225.jpg";
   const url1 = "https://www.linkpicture.com/q/nodata";
+  const url2 =
+    "https://rukminim1.flixcart.com/flap/128/128/image/29327f40e9c4d26b.png?q=100";
+  const url3 =
+    "https://rukminim1.flixcart.com/flap/128/128/image/22fddf3c7da4c4f4.png?q=100";
 
+  const url4 =
+    "https://rukminim1.flixcart.com/flap/128/128/image/82b3ca5fb2301045.png?q=100";
+  const url5 =
+    "https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100";
+  const url6 =
+    "https://rukminim1.flixcart.com/flap/128/128/image/0ff199d1bd27eb98.png?q=100";
+  const url7 =
+    "https://rukminim1.flixcart.com/flap/128/128/image/71050627a56b4693.png?q=100";
+  const url8 =
+    "https://rukminim1.flixcart.com/flap/128/128/image/f15c02bfeb02d15d.png?q=100";
+  const url9 =
+    "https://rukminim1.flixcart.com/flap/128/128/image/dff3f7adcf3a90c6.png?q=100";
   // get all categories:
   const getAllCategory = async () => {
     try {
@@ -133,260 +155,364 @@ const HomePage = () => {
     loadmore();
   }, [page]);
   return (
-    <Layout title={"All Products- Shop Now"}>
-    <div style={{backgroundColor:'#FEF5E2'}}>
-    <div>
-        {/* carousel elements: */}
-        <div
-          id="carouselExampleControls"
-          className="carousel slide mt-5"
-          data-bs-ride="carousel"
-        >
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img
-                style={{ height: 400 }}
-                src={url}
-                className="d-block w-100 "
-                alt="..."
-              />
-            </div>
-
-            <div className="carousel-item active">
-              <img
-                style={{ height: 400 }}
-                src={image10}
-                className="d-block w-100 "
-                alt="..."
-              />
-            </div>
-            <div className="carousel-item">
-              <img
-                style={{ height: 400 }}
-                src={image2}
-                className="d-block w-100"
-                alt="..."
-              />
-            </div>
-            <div className="carousel-item">
-              <img
-                style={{ height: 400 }}
-                src={image3}
-                className="d-block w-100"
-                alt="..."
-              />
-            </div>
+    <Layout className="mt-5" title={"All Products- Shop Now"}>
+      <div className="mt-5" style={{ backgroundColor: "#FEF5E2" }}>
+        {/* card designs for showing product category: */}
+        <div className="d-flex justify-content-around mb-5 mt-5  text-dark ">
+          <div className="d-none d-lg-block mt-4">
+            <img src={url2} alt="" onClick={() => navigate("/categories")} />{" "}
+            <br />
+            <h6 style={{ fontWeight: 600 }} className="text-center ptag">
+              Grocery
+            </h6>
           </div>
-          <button
-            className="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExampleControls"
-            data-bs-slide="prev"
-          >
-            <span className="carousel-control-prev-icon" aria-hidden="true" />
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button
-            className="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExampleControls"
-            data-bs-slide="next"
-          >
-            <span className="carousel-control-next-icon" aria-hidden="true" />
-            <span className="visually-hidden">Next</span>
-          </button>
+          <div className="d-none d-lg-block mt-4">
+            <img src={url3} alt="" onClick={() => navigate("/categories")} />{" "}
+            <br />
+            <h6 style={{ fontWeight: 600 }} className="text-center ptag">
+              Mobiles
+            </h6>
+          </div>
+          <div className="d-none d-lg-block mt-4">
+            <img src={url4} alt="" onClick={() => navigate("/categories")} />{" "}
+            <br />
+            <h6 style={{ fontWeight: 600 }} className="text-center ptag">
+              Fashion
+            </h6>
+          </div>
+          <div className="d-none d-md-block d-lg-block mt-4">
+            <img src={url5} alt="" onClick={() => navigate("/categories")} />{" "}
+            <br />
+            <h6 style={{ fontWeight: 600 }} className="text-center ptag">
+              Electronics
+            </h6>
+          </div>
+          <div className="d-none d-md-block d-lg-block mt-4">
+            <img src={url6} alt="" onClick={() => navigate("/categories")} />{" "}
+            <br />
+            <h6 style={{ fontWeight: 600 }} className="text-center ptag">
+              Appliances
+            </h6>
+          </div>
+          <div className="d-none  d-lg-block mt-4">
+            <img src={url7} alt="" onClick={() => navigate("/categories")} />{" "}
+            <br />
+            <h6 style={{ fontWeight: 600 }} className="text-center ptag">
+              Travel
+            </h6>
+          </div>
+          <div className="d-none d-md-block d-lg-block mt-4">
+            <img src={url8} alt="" onClick={() => navigate("/categories")} />{" "}
+            <br />
+            <h6 style={{ fontWeight: 600 }} className="text-center ptag">
+              Top Offers
+            </h6>
+          </div>
+          <div className="d-none d-lg-block mt-4">
+            <img src={url9} alt="" onClick={() => navigate("/categories")} />{" "}
+            <br />
+            <h6 style={{ fontWeight: 600 }} className="text-center ptag">
+              Toys
+            </h6>
+          </div>
+          <div className="d-none d-md-block d-lg-block mt-4">
+            <img src={url9} alt="" onClick={() => navigate("/categories")} />{" "}
+            <br />
+            <h6 style={{ fontWeight: 600 }} className="text-center ptag">
+              Brodcasting
+            </h6>
+          </div>
         </div>
 
-        {/* home design for products starting here: */}
-        <div className="row mt-4 ">
-          <div className="col-md-2 container shadow-lg  mb-5 bg-white">
-            <h5 className="text-center mt-3">Search by Category</h5>
+        <div>
+          {/* carousel elements: */}
+          <div
+            id="carouselExampleControls"
+            className="carousel slide mt-5"
+            data-bs-ride="carousel"
+          >
+            <div className="carousel-inner">
+              <div className="carousel-item active">
+                <img
+                  style={{ height: 400 }}
+                  src={url}
+                  className="d-block w-100 "
+                  alt="..."
+                />
+              </div>
 
-            <div className="d-flex flex-column border p-2">
-              {categories?.map((c) => (
-                <Checkbox
-                  key={c._id}
-                  onChange={(e) => handleFilter(e.target.checked, c._id)}
-                >
-                  {c.name}
-                </Checkbox>
-              ))}
-            </div>
-
-            <h5 className="text-center mt-3 ">Search by Price</h5>
-            {/* price filtering operation: */}
-            <div className="d-flex flex-column border p-2 ">
-              <Radio.Group onChange={(e) => setRadio(e.target.value)}>
-                {Prices?.map((p) => (
-                  <div key={p._id}>
-                    <Radio value={p.array}>{p.name}</Radio>
-                  </div>
-                ))}
-              </Radio.Group>
+              <div className="carousel-item active">
+                <img
+                  style={{ height: 400 }}
+                  src={image10}
+                  className="d-block w-100 "
+                  alt="..."
+                />
+              </div>
+              <div className="carousel-item">
+                <img
+                  style={{ height: 400 }}
+                  src={image2}
+                  className="d-block w-100"
+                  alt="..."
+                />
+              </div>
+              <div className="carousel-item">
+                <img
+                  style={{ height: 400 }}
+                  src={image3}
+                  className="d-block w-100"
+                  alt="..."
+                />
+              </div>
             </div>
             <button
-              className="btn btn-success w-100 mt-3 mb-5"
-              onClick={() => window.location.reload()}
+              className="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleControls"
+              data-bs-slide="prev"
             >
-              Reset Search
+              <span className="carousel-control-prev-icon" aria-hidden="true" />
+              <span className="visually-hidden">Previous</span>
             </button>
-
-            {/* carousel elements: */}
-            <h6 style={{ fontWeight: 600 }} className="text-center design ">
-              Recommended Products
-            </h6>
-            <hr />
-            <div
-              id="carouselExampleControls"
-              className="carousel slide mt-5"
-              data-bs-ride="carousel"
+            <button
+              className="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleControls"
+              data-bs-slide="next"
             >
-              <div className="carousel-inner">
-                <div className="carousel-item active">
-                  <img src={image4} className="d-block w-100" alt="..." />
-                  <h6 className="text-center">Fashion</h6>
-                </div>
-                <div className="carousel-item">
-                  <img src={image5} className="d-block w-100" alt="..." />
-                  <h6 className="text-center">Home & decor</h6>
-                </div>
-                <div className="carousel-item">
-                  <img src={image9} className="d-block w-100" alt="..." />
-                  <h6 className="text-center">Beauty products</h6>
-                </div>
-                <div className="carousel-item">
-                  <img src={image6} className="d-block w-100" alt="..." />
-                  <h6 className="text-center">Gadgets</h6>
-                </div>
-                <div className="carousel-item">
-                  <img src={image7} className="d-block w-100" alt="..." />
-                  <h6 className="text-center">Cloth & butique</h6>
-                </div>
-                <div className="carousel-item">
-                  <img src={image8} className="d-block w-100" alt="..." />
-                  <h6 className="text-center">Smart watches</h6>
-                </div>
-              </div>
-              <button
-                className="carousel-control-prev"
-                type="button"
-                data-bs-target="#carouselExampleControls"
-                data-bs-slide="prev"
-              >
-                <span
-                  className="carousel-control-prev-icon"
-                  aria-hidden="true"
-                />
-                <span className="visually-hidden">Previous</span>
-              </button>
-              <button
-                className="carousel-control-next"
-                type="button"
-                data-bs-target="#carouselExampleControls"
-                data-bs-slide="next"
-              >
-                <span
-                  className="carousel-control-next-icon"
-                  aria-hidden="true"
-                />
-                <span className="visually-hidden">Next</span>
-              </button>
-            </div>
-            {/* collups component: */}
-            <div>
-              <p>
-                <button
-                  className="btn btn-primary mt-3 w-100 d-none d-sm-block"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseWidthExample"
-                  aria-expanded="false"
-                  aria-controls="collapseWidthExample"
-                >
-                  Call For support
-                </button>
-              </p>
-              <div style={{ minHeight: 120 }}>
-                <div
-                  className="collapse collapse-horizontal"
-                  id="collapseWidthExample"
-                >
-                  <div className="card card-body d-none d-sm-block" style={{ width: 250 ,fontSize:13,marginBottom:20}}>
-                  Amigo's Outlet Limited. <br />
-                  <hr />
-                  Majortila, Sylhet, Bangladesh. <br />
-                  <hr />
-                  Email: amigosoutlet1@gmail.com <br />
-                  <hr />
-                  Phone: 01774573076
-                  </div>
-                </div>
-              </div>
-            </div>
+              <span className="carousel-control-next-icon" aria-hidden="true" />
+              <span className="visually-hidden">Next</span>
+            </button>
           </div>
 
-          <div className="col-md-9 ">
-            {/* {JSON.stringify(radio, null, 4)} */}
-            {/* <h1 className="text-center">All Products</h1> */}
-            <div className="d-flex flex-wrap mb-5 ">
-              {products?.map((p) => (
-                <div className="card m-2 text-dark " style={{ width: "18rem" }}>
-                  <img
-                    src={`/api/v1/product/product-photo/${p._id}`}
-                    className="card-img-top h-50"
-                    alt=""
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">{p.name}</h5>
+          {/*Mainly home design for products starting here: */}
+          <div className="row mt-4 ">
+            <div className="col-md-2 container shadow-lg  mb-5 bg-white">
+              <h5 className="text-center mt-3">Search by Category</h5>
 
-                    <p className="card-text">
-                      {p.description.substring(0, 30)}...
-                    </p>
-                    <p className="card-text">{p.price} Taka</p>
+              <div className="d-flex flex-column border p-2">
+                {categories?.map((c) => (
+                  <Checkbox
+                    key={c._id}
+                    onChange={(e) => handleFilter(e.target.checked, c._id)}
+                  >
+                    {c.name}
+                  </Checkbox>
+                ))}
+              </div>
+
+              <h5 className="text-center mt-3 ">Search by Price</h5>
+              {/* price filtering operation: */}
+              <div className="d-flex flex-column border p-2 ">
+                <Radio.Group onChange={(e) => setRadio(e.target.value)}>
+                  {Prices?.map((p) => (
+                    <div key={p._id}>
+                      <Radio value={p.array}>{p.name}</Radio>
+                    </div>
+                  ))}
+                </Radio.Group>
+              </div>
+              <button
+                className="btn btn-success w-100 mt-3 mb-5"
+                onClick={() => window.location.reload()}
+              >
+                Reset Search
+              </button>
+
+              {/* carousel elements: */}
+              <h6 style={{ fontWeight: 600 }} className="text-center design ">
+                Recommended Products
+              </h6>
+              <hr />
+              <div
+                id="carouselExampleControls"
+                className="carousel slide mt-5"
+                data-bs-ride="carousel"
+              >
+                <div className="carousel-inner">
+                  <div
+                    className="carousel-item active "
+                    data-bs-interval="2000"
+                  >
+                    <img src={image4} className="d-block w-100" alt="..." />
+                    <h6 className="text-center">Fashion</h6>
                   </div>
-                  <div className="d-flex ">
-                    <button
-                      class="btn btn-warning m-3"
-                      onClick={() => navigate(`/product/${p.slug}`)}
-                    >
-                      See detail
-                    </button>
-                    <button
-                      class="btn btn-primary m-3"
-                      onClick={() => {
-                        setCart([...cart, p]);
-
-                        //saving the cart state in local storage so that it does not go away after reload:
-                        localStorage.setItem(
-                          "cart",
-                          JSON.stringify([...cart, p])
-                        );
-                        toast.success("item added to cart");
-                      }}
-                    >
-                      Add to cart
-                    </button>
+                  <div className="carousel-item" data-bs-interval="2000">
+                    <img src={image5} className="d-block w-100" alt="..." />
+                    <h6 className="text-center">Home & decor</h6>
+                  </div>
+                  <div className="carousel-item" data-bs-interval="2000">
+                    <img src={image9} className="d-block w-100" alt="..." />
+                    <h6 className="text-center">Beauty products</h6>
+                  </div>
+                  <div className="carousel-item" data-bs-interval="2000">
+                    <img src={image6} className="d-block w-100" alt="..." />
+                    <h6 className="text-center">Gadgets</h6>
+                  </div>
+                  <div className="carousel-item" data-bs-interval="2000">
+                    <img src={image7} className="d-block w-100" alt="..." />
+                    <h6 className="text-center">Cloth & butique</h6>
+                  </div>
+                  <div className="carousel-item" data-bs-interval="2000">
+                    <img src={image8} className="d-block w-100" alt="..." />
+                    <h6 className="text-center">Smart watches</h6>
                   </div>
                 </div>
-              ))}
-            </div>
-            <div className="m-2 p-3">
-              {products && products.length < total && (
                 <button
-                  className="btn btn-warning"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setPage(page + 1);
-                  }}
+                  className="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#carouselExampleControls"
+                  data-bs-slide="prev"
                 >
-                  {loading ? "Loading ...." : "Load more.."}
+                  <span
+                    className="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  />
+                  <span className="visually-hidden">Previous</span>
                 </button>
-              )}
+                <button
+                  className="carousel-control-next"
+                  type="button"
+                  data-bs-target="#carouselExampleControls"
+                  data-bs-slide="next"
+                >
+                  <span
+                    className="carousel-control-next-icon"
+                    aria-hidden="true"
+                  />
+                  <span className="visually-hidden">Next</span>
+                </button>
+              </div>
+              {/* collups component: */}
+              <div>
+                <p>
+                  <button
+                    className="btn btn-primary mt-3 w-100 d-none d-sm-block"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseWidthExample"
+                    aria-expanded="false"
+                    aria-controls="collapseWidthExample"
+                  >
+                    Call For support
+                  </button>
+                </p>
+                <div style={{ minHeight: 120 }}>
+                  <div
+                    className="collapse collapse-horizontal"
+                    id="collapseWidthExample"
+                  >
+                    <div
+                      className="card card-body d-none d-sm-block"
+                      style={{ width: 250, fontSize: 13, marginBottom: 20 }}
+                    >
+                      Amigo's Outlet Limited. <br />
+                      <hr />
+                      Majortila, Sylhet, Bangladesh. <br />
+                      <hr />
+                      Email: amigosoutlet1@gmail.com <br />
+                      <hr />
+                      Phone: 01774573076
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-9 ">
+              {/* {JSON.stringify(radio, null, 4)} */}
+              {/* <h1 className="text-center">All Products</h1> */}
+
+              {/* simple designs: */}
+
+              <div style={{ marginLeft: 0 }} class=" text-center space-around">
+                <div class="d-flex gx-0">
+                  <div class="col d-none  d-lg-block">
+                    <div class="p-3  animated ">Terms of use</div>
+                  </div>
+                  <div class="col d-none  d-lg-block">
+                    <div class="p-3  animated ">Payments</div>
+                  </div>
+                  <div class="col d-none  d-lg-block">
+                    <div class="p-3  animated ">User Manual</div>
+                  </div>
+                  <div class="col d-none  d-lg-block">
+                    <div class="p-3  animated">Business Policy </div>
+                  </div>
+
+                  <div class="col d-none  d-lg-block">
+                    <div class="p-3  animated ">About Us</div>
+                  </div>
+                  <div class="col d-none  d-lg-block">
+                    <div class="p-3  animated ">Stars</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Mapping and showing products: */}
+              <div className="d-flex flex-wrap mb-5 ">
+                {products?.map((p) => (
+                  <div
+                    className="card m-2 text-dark myProductCard"
+                    style={{ width: "18rem" }}
+                  >
+                    <img
+                      src={`/api/v1/product/product-photo/${p._id}`}
+                      className="mx-auto h-50 w-75"
+                      alt=""
+                    />
+                    <div className="card-body">
+                      <h5 className="card-title">{p.name}</h5>
+
+                      <p className="card-text">
+                        {p.description.substring(0, 30)}...
+                      </p>
+                      <p className="card-text">{p.price} Taka</p>
+                    </div>
+                    <div className="d-flex ">
+                      <button
+                        class="btn btn-dark m-3 text-light"
+                        onClick={() => navigate(`/product/${p.slug}`)}
+                      >
+                        See detail
+                      </button>
+                      <button
+                        class="btn btn-dark m-3 text-light"
+                        onClick={() => {
+                          setCart([...cart, p]);
+
+                          //saving the cart state in local storage so that it does not go away after reload:
+                          localStorage.setItem(
+                            "cart",
+                            JSON.stringify([...cart, p])
+                          );
+                          toast.success("item added to cart");
+                        }}
+                      >
+                        Add to cart
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="m-2 p-3">
+                {products && products.length < total && (
+                  <button
+                    className="btn btn-warning"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setPage(page + 1);
+                    }}
+                  >
+                    {loading ? "Loading ...." : "Load more.."}
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     </Layout>
   );
 };

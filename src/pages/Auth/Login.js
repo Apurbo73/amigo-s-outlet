@@ -34,9 +34,13 @@ const Login = () => {
 
         //storing the data in local storage:
         localStorage.setItem("auth", JSON.stringify(res.data));
+        //setting data for remember me session at local storage:
+        localStorage.setItem("isloggedIn", true);
+        const isloggedIN= localStorage.getItem('isloggedIn');
+        console.log(isloggedIN);
         // j location e jaite chay tar state already thakle niye jabe
         //  na hole unauthorized user hole age login korte hobe then shei state e jete parbe
-        navigate(location.state || "/");
+        navigate(isloggedIN ? location.state || "/" : "/login");
       } else {
         toast.error(res.data.message);
       }
@@ -59,7 +63,7 @@ const Login = () => {
 
         <div>
           <div style={{backgroundColor:'#FFFFFF'}} className="m-1 mt-5 ">
-            <h3 className="text-center mt-5">Login To Amigo's Outlet !!</h3>
+            <h3 className="text-center mt-5">Sign In !!</h3>
 
             <form onSubmit={handleSubmit}>
               <div className="mb-1">

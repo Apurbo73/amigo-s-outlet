@@ -18,11 +18,13 @@ const Header = () => {
       token: ""
     });
     localStorage.removeItem("auth");
+    localStorage.removeItem("isloggedIn");
+
     toast.success("LogOut Successfully");
   };
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light  fixed-top">
+      <nav className="navbar navbar-expand-lg navbar-light bg-dark text-light  fixed-top">
         <div className="container-fluid">
           <button
             className="navbar-toggler"
@@ -38,11 +40,11 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <div style={{ display: "flex" }}>
               <Link to="/" className="navbar-brand" href="#">
-                <HiShoppingCart /> Amigo's
-                <span style={{ color: "orange", marginLeft: 10 }}>Outlet</span>
+                < HiShoppingCart style={{color:"#ffff"}}/> <span style={{color:"#ffff"}}>Amigo's</span>
+                <span style={{ color: "yellow", marginLeft: 10 }}>Outlet</span>
               </Link>
-              <Link to="/" className="navbar-brand sylheti-brand" href="#">
-                <span style={{ color: "teal" }}>Sylheti</span> Brand
+              <Link to="/" className="navbar-brand sylheti-brand text-light" href="#">
+                <span style={{textDecoration:'none'}}>Sylheti</span> Brand
                 <HiShoppingCart />
               </Link>
             </div>
@@ -51,52 +53,12 @@ const Header = () => {
                 <SearchInput></SearchInput>
               </li>
               <li className="nav-item">
-                <NavLink to="/" className="nav-link ">
+                <NavLink to="/" className="nav-link text-light">
                   Home
                 </NavLink>
               </li>
 
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarScrollingDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  User Manual
-                </a>
-                <ul
-                  className="dropdown-menu"
-                  aria-labelledby="navbarScrollingDropdown"
-                >
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Products
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Payments
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-               
-
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      How to use
-                    </a>
-                  </li>
-                </ul>
-              </li>
+            
 
               <li className="nav-item"></li>
 
@@ -104,13 +66,13 @@ const Header = () => {
                 // Checking if there is a user to handle showing register, sign in and logging out button
                 !auth.user ? (
                   <>
-                    <li className="nav-item">
-                      <NavLink to="/register" className="nav-link">
+                    <li className="nav-item ">
+                      <NavLink to="/register" className="nav-link text-light">
                         Register
                       </NavLink>
                     </li>
-                    <li className="nav-item">
-                      <NavLink to="/login" className="nav-link">
+                    <li className="nav-item ">
+                      <NavLink to="/login" className="nav-link text-light">
                         SignIn
                       </NavLink>
                     </li>
@@ -119,7 +81,7 @@ const Header = () => {
                   <>
                     <li className="nav-item dropdown">
                       <NavLink
-                        className="nav-link dropdown-toggle"
+                        className="nav-link dropdown-toggle text-light"
                         role="button"
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
@@ -156,10 +118,10 @@ const Header = () => {
                 )
               }
 
-              <li  className="nav-item mx-2 mt-2">
+              <li  className="nav-item mx-2 mt-2 text-light">
                 <Badge count={cart?.length} showZero>
-                  <NavLink to="/cart" className="nav-link">
-                    <HiShoppingCart /> <span style={{fontSize:16, color:'black'}}>Cart</span>
+                  <NavLink to="/cart" className="nav-link text-light">
+                    <HiShoppingCart /> <span style={{fontSize:16,}}>Cart</span>
                   </NavLink>
                 </Badge>
               </li>
