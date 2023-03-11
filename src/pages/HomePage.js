@@ -15,7 +15,9 @@ import image12 from "../../../client/src/images/iphone.png";
 import image13 from "../../../client/src/images/sWatch.png";
 import image14 from "../../../client/src/images/image11.png";
 import image15 from "../../../client/src/images/image11.png";
+import orange from "../../../client/src/images/orange.jpg";
 
+import iphoneBanner from "../../../client/src/images/iphoneBanner.jpg"
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -26,6 +28,10 @@ import { useCart } from "../components/context/cart";
 import { toast } from "react-hot-toast";
 import Badge from "antd";
 import useCategory from "../hooks/useCategory";
+import FancyBanner from "./FancyBanner/FancyBanner";
+
+
+
 const HomePage = () => {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
@@ -156,7 +162,7 @@ const HomePage = () => {
   }, [page]);
   return (
     <Layout className="mt-5" title={"All Products- Shop Now"}>
-      <div className="mt-5" style={{ backgroundColor: "#FEF5E2" }}>
+      <div className="mt-5 overflow-hidden" style={{ backgroundColor: "#FEF5E2" }}>
         {/* card designs for showing product category: */}
         <div className="d-flex justify-content-around mb-5 mt-5  text-dark ">
           <div className="d-none d-lg-block mt-4">
@@ -225,7 +231,7 @@ const HomePage = () => {
         </div>
 
         <div>
-          {/* carousel elements: */}
+          {/*  banner carousel elements: */}
           <div
             id="carouselExampleControls"
             className="carousel slide mt-5"
@@ -252,7 +258,7 @@ const HomePage = () => {
               <div className="carousel-item">
                 <img
                   style={{ height: 400 }}
-                  src={image2}
+                  src="http://cdn.shopify.com/s/files/1/0115/0272/collections/collection-banner_iPhone_Cases_Desktop.jpg?v=1625072679"
                   className="d-block w-100"
                   alt="..."
                 />
@@ -260,7 +266,7 @@ const HomePage = () => {
               <div className="carousel-item">
                 <img
                   style={{ height: 400 }}
-                  src={image3}
+                  src={iphoneBanner}
                   className="d-block w-100"
                   alt="..."
                 />
@@ -288,7 +294,7 @@ const HomePage = () => {
 
           {/*Mainly home design for products starting here: */}
           <div className="row mt-4 ">
-            <div className="col-md-2 container shadow-lg  mb-5 bg-white">
+            <div className="col-md-2  shadow-lg ms-5 mb-5 bg-white">
               <h5 className="text-center mt-3">Search by Category</h5>
 
               <div className="d-flex flex-column border p-2">
@@ -320,7 +326,7 @@ const HomePage = () => {
                 Reset Search
               </button>
 
-              {/* carousel elements: */}
+              {/* Mini carousel elements: */}
               <h6 style={{ fontWeight: 600 }} className="text-center design ">
                 Recommended Products
               </h6>
@@ -384,7 +390,7 @@ const HomePage = () => {
                   <span className="visually-hidden">Next</span>
                 </button>
               </div>
-              {/* collups component: */}
+              {/* addvartise component: */}
               <div>
                 <p>
                   <button
@@ -421,40 +427,13 @@ const HomePage = () => {
             </div>
 
             <div className="col-md-9 ">
-              {/* {JSON.stringify(radio, null, 4)} */}
-              {/* <h1 className="text-center">All Products</h1> */}
-
-              {/* simple designs: */}
-
-              <div style={{ marginLeft: 0 }} class=" text-center space-around">
-                <div class="d-flex gx-0">
-                  <div class="col d-none  d-lg-block">
-                    <div class="p-3  animated ">Terms of use</div>
-                  </div>
-                  <div class="col d-none  d-lg-block">
-                    <div class="p-3  animated ">Payments</div>
-                  </div>
-                  <div class="col d-none  d-lg-block">
-                    <div class="p-3  animated ">User Manual</div>
-                  </div>
-                  <div class="col d-none  d-lg-block">
-                    <div class="p-3  animated">Business Policy </div>
-                  </div>
-
-                  <div class="col d-none  d-lg-block">
-                    <div class="p-3  animated ">About Us</div>
-                  </div>
-                  <div class="col d-none  d-lg-block">
-                    <div class="p-3  animated ">Stars</div>
-                  </div>
-                </div>
-              </div>
+             
 
               {/* Mapping and showing products: */}
               <div className="d-flex flex-wrap mb-5 ">
                 {products?.map((p) => (
                   <div
-                    className="card m-2 text-dark myProductCard"
+                    className="card mx-3 mb-3 text-dark myProductCard"
                     style={{ width: "18rem" }}
                   >
                     <img

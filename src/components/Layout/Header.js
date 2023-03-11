@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
-import { HiShoppingCart } from "react-icons/hi";
+import { HiShoppingBag } from "react-icons/hi";
 import { useAuth } from "../context/auth";
 import toast from "react-hot-toast";
 import SearchInput from "../Form/SearchInput";
@@ -24,7 +24,7 @@ const Header = () => {
   };
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-dark text-light  fixed-top">
+      <nav className="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
         <div className="container-fluid">
           <button
             className="navbar-toggler"
@@ -40,13 +40,10 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <div style={{ display: "flex" }}>
               <Link to="/" className="navbar-brand" href="#">
-                < HiShoppingCart style={{color:"#ffff"}}/> <span style={{color:"#ffff"}}>Amigo's</span>
+                < HiShoppingBag className="text-warning"/> <span style={{color:"#ffff"}}>Amigo's</span>
                 <span style={{ color: "yellow", marginLeft: 10 }}>Outlet</span>
               </Link>
-              <Link to="/" className="navbar-brand sylheti-brand text-light" href="#">
-                <span style={{textDecoration:'none'}}>Sylheti</span> Brand
-                <HiShoppingCart />
-              </Link>
+              
             </div>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="m-1">
@@ -121,7 +118,7 @@ const Header = () => {
               <li  className="nav-item mx-2 mt-2 text-light">
                 <Badge count={cart?.length} showZero>
                   <NavLink to="/cart" className="nav-link text-light">
-                    <HiShoppingCart /> <span style={{fontSize:16,}}>Cart</span>
+                    <HiShoppingBag /> <span style={{fontSize:16,}}>Cart</span>
                   </NavLink>
                 </Badge>
               </li>

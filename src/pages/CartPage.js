@@ -15,27 +15,13 @@ const CartPage = () => {
   const [clientToken, setClientToken] = useState("");
   const [instance, setInstance] = useState("");
   const [loading, setLoading] = useState(false);
-  const [amount,setAmount]= useState(1);
+  // const [amount,setAmount]= useState(1);
   
   const navigate = useNavigate();
 
   
 
-  // myTry--------------------------------
- 
-const increment = (p) =>{
-  console.log('p',p)
-  setAmount(amount + 1);
-  // if(myProducts.f((i) => i._id === p.id)){
-  //   console.log(myProducts)
-  //   setAmount(amount + 1);
-  // }
-}
-const decrement = (p) =>{
-amount > 1 ? setAmount(amount - 1) : setAmount(1);
-}
- 
-// end of myTry -------------------------
+
 
 
   //Total price counting:
@@ -149,11 +135,11 @@ amount > 1 ? setAmount(amount - 1) : setAmount(1);
                       className="card-img-top h-80"
                       alt=""
                     />
-                    <div className="mb-1 mt-1 text-center">
+                    {/* <div className="mb-1 mt-1 text-center">
                       <div onClick={() =>decrement(p)} className="btn btn-outline-primary m-1 minus">-</div>
                       <div className="btn btn-outline-primary m-1 num">{amount}</div>
                       <div onClick={()=>increment(p)} className="btn btn-outline-primary m-1 plus">+</div>
-                    </div>
+                    </div> */}
                   </div>
                   <div className="col-md-8">
                     <h6 className="card-title mt-5">{p.name}</h6>

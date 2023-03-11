@@ -104,10 +104,7 @@ const Login = () => {
               >
                 Forgot Password?
               </button>
-              <p style={{ textAlign: "center" }}>Or</p>
-              <button type="submit" className="btn btn-warning w-100">
-                Continue With Google
-              </button>
+              
 
               <Link
                 to="/register"

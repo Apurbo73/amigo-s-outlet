@@ -10,14 +10,47 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [comPass, setConPass] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [answer, setAnswer] = useState("");
 
   const navigate = useNavigate();
   // Handling form default activities
+  const fromHandler = (event) => {
+    event.preventDefault();
+    validationHandler();
+  }
+
+  const validationHandler = event => {
+    // FrontEnd Validation
+    const nameReg = /[a-zA-Z-.]/;
+    const phoneReg = /((\+88)|(\+88-))?01[3-9][0-9]{8}/
+    const passReg = /((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[#,*,.,$,@])).{8,20}/
+
+
+    if(password !== comPass){
+      return toast.error("Password & confirm password are not matched");  
+    }
+    if(!name.match(nameReg)){
+      return toast.error("only charchter is allowed in name");
+    }
+    if(!phone.match(phoneReg)){
+      return toast.error("Invalid mobile number");
+    }
+    if(!password.match(passReg)){
+      return toast.error("Atleast 1 digit, 1 character, 1 sepecial character & length 8-20 in password");
+    }
+    else{
+      handleSubmit();
+    }
+
+  }
+
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    
+
     try {
       const res = await axios.post(`/api/v1/auth/register`, {
         name,
@@ -27,6 +60,8 @@ const Register = () => {
         address,
         answer
       });
+
+      
 
       if (res.data.success) {
         toast.success(
@@ -54,8 +89,7 @@ const Register = () => {
           <div>
             <div style={{ backgroundColor: "#ffff" }} className="mt-5 p-1 ">
               <h4 className="text-center">Create Account !!</h4>
-
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={fromHandler}>
                 <div className="mb-1 h-100">
                   <input
                     value={name}
@@ -74,7 +108,7 @@ const Register = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     type="email"
                     className="form-control"
-                    id="exampleInputEmail1"
+                    id="exampleInputEmail2"
                     aria-describedby="emailHelp"
                     placeholder="Enter your email"
                     required
@@ -86,18 +120,31 @@ const Register = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     type="password"
                     className="form-control"
-                    id="exampleInputPassword1"
+                    id="exampleInputPassword3"
                     placeholder="Enter your password"
                     required
                   />
                 </div>
+
+                <div className="mb-1">
+                  <input
+                    value={comPass}
+                    onChange={(e) => setConPass(e.target.value)}
+                    type="password"
+                    className="form-control"
+                    id="exampleInputPassword33"
+                    placeholder="Confirm your password"
+                    required
+                  />
+                </div>
+                
                 <div className="mb-1">
                   <input
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    type="text"
+                    type="tel"
                     className="form-control"
-                    id="exampleInputEmail1"
+                    id="exampleInputEmail5"
                     aria-describedby="emailHelp"
                     placeholder="Enter your phone number"
                     required
@@ -109,7 +156,7 @@ const Register = () => {
                     onChange={(e) => setAddress(e.target.value)}
                     type="text"
                     className="form-control"
-                    id="exampleInputEmail1"
+                    id="exampleInputEmail6"
                     aria-describedby="emailHelp"
                     placeholder="Enter your address"
                     required
@@ -121,7 +168,7 @@ const Register = () => {
                     onChange={(e) => setAnswer(e.target.value)}
                     type="text"
                     className="form-control"
-                    id="exampleInputEmail1"
+                    id="exampleInputEmail7"
                     aria-describedbaty="emailHelp"
                     placeholder="What is your favourite place"
                     required
@@ -134,10 +181,8 @@ const Register = () => {
                 </button>
                 <p style={{fontSize:12}}>By clicking submit you are agree to Amigo's Terms and  Policy</p>
 
-                <p style={{ textAlign: "center" }}>Or</p>
-                <button type="submit" className="btn btn-outline-danger w-100">
-                  Continue With Google
-                </button>
+                
+                
                 <Link
                   to="/login"
                   className="text-center"
