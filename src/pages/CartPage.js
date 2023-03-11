@@ -15,7 +15,28 @@ const CartPage = () => {
   const [clientToken, setClientToken] = useState("");
   const [instance, setInstance] = useState("");
   const [loading, setLoading] = useState(false);
+  const [amount,setAmount]= useState(1);
+  
   const navigate = useNavigate();
+
+  
+
+  // myTry--------------------------------
+ 
+const increment = (p) =>{
+  console.log('p',p)
+  setAmount(amount + 1);
+  // if(myProducts.f((i) => i._id === p.id)){
+  //   console.log(myProducts)
+  //   setAmount(amount + 1);
+  // }
+}
+const decrement = (p) =>{
+amount > 1 ? setAmount(amount - 1) : setAmount(1);
+}
+ 
+// end of myTry -------------------------
+
 
   //Total price counting:
   const totalPrice = () => {
@@ -78,17 +99,7 @@ const CartPage = () => {
     }
   };
 
-  // handling plus button of adding products:
 
-  // const plus = document.querySelector(".plus"),
-  //   minus = document.querySelector(".minus"),
-  //   num = document.querySelector(".num");
-
-  // let a = 1;
-  // plus.addEventListener("click", () => {
-  //   a++;
-  //   console.log(a);
-  // });
 
   return (
     <Layout>
@@ -139,9 +150,9 @@ const CartPage = () => {
                       alt=""
                     />
                     <div className="mb-1 mt-1 text-center">
-                      <div className="btn btn-outline-primary m-1 minus">-</div>
-                      <div className="btn btn-outline-primary m-1 num">0</div>
-                      <div className="btn btn-outline-primary m-1 plus">+</div>
+                      <div onClick={() =>decrement(p)} className="btn btn-outline-primary m-1 minus">-</div>
+                      <div className="btn btn-outline-primary m-1 num">{amount}</div>
+                      <div onClick={()=>increment(p)} className="btn btn-outline-primary m-1 plus">+</div>
                     </div>
                   </div>
                   <div className="col-md-8">
