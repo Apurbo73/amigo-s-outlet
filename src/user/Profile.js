@@ -18,10 +18,10 @@ const Profile = () => {
   //get user data
   useEffect(() => {
     const { email, name, phone, address } = auth?.user;
-    setName(name);
-    setPhone(phone);
-    setEmail(email);
-    setAddress(address);
+    // setName(name);
+    // setPhone(phone);
+    // setEmail(email);
+    // setAddress(address);
   }, [auth?.user]);
 
   // form function
@@ -43,7 +43,7 @@ const Profile = () => {
         ls = JSON.parse(ls);
         ls.user = data.updatedUser;
         localStorage.setItem("auth", JSON.stringify(ls));
-        toast.success("Profile Updated Successfully");
+        toast.success("Profile Updated Successfully Visit Dashboard");
       }
     } catch (error) {
       console.log(error);
@@ -79,7 +79,7 @@ const Profile = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     className="form-control"
                     id="exampleInputEmail1"
-                    placeholder="Enter Your Email "
+                    placeholder="Email can not be changed "
                     disabled
                   />
                 </div>

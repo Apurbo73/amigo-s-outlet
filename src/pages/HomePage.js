@@ -44,7 +44,7 @@ const HomePage = () => {
   const [cart, setCart] = useCart();
 
   const url = "https://www.linkpicture.com/q/LPic64025723758b82099065225.jpg";
-  const url1 = "https://www.linkpicture.com/q/nodata";
+  const url1 = 'https://rukminim1.flixcart.com/flap/128/128/image/ee162bad964c46ae.png?q=100';
   const url2 =
     "https://rukminim1.flixcart.com/flap/128/128/image/29327f40e9c4d26b.png?q=100";
   const url3 =
@@ -222,10 +222,10 @@ const HomePage = () => {
             </h6>
           </div>
           <div className="d-none d-md-block d-lg-block mt-4">
-            <img src={url9} alt="" onClick={() => navigate("/categories")} />{" "}
+            <img src={url1} alt="" onClick={() => navigate("/categories")} />{" "}
             <br />
             <h6 style={{ fontWeight: 600 }} className="text-center ptag">
-              Brodcasting
+              Home
             </h6>
           </div>
         </div>
@@ -250,7 +250,7 @@ const HomePage = () => {
               <div className="carousel-item active">
                 <img
                   style={{ height: 400 }}
-                  src={image10}
+                  src="https://cdn.shopify.com/s/files/1/0588/1492/2946/collections/Website_banner_2-02-768288_1350x451.jpg?v=1651992091"
                   className="d-block w-100 "
                   alt="..."
                 />

@@ -24,9 +24,12 @@ const Register = () => {
 
   const validationHandler = event => {
     // FrontEnd Validation
-    const nameReg = /[a-zA-Z-.]/;
+    const nameReg = /[a-zA-Z-.]/
     const phoneReg = /((\+88)|(\+88-))?01[3-9][0-9]{8}/
-    const passReg = /((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[#,*,.,$,@])).{8,20}/
+    const passReg = /((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[#,*,.,$,@])).{6,20}/
+    const addressReg = /[a-zA-Z-,.0-9]/
+    // const emailReg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+    const answerReg = /[a-zA-Z-,.0-9]/
 
 
     if(password !== comPass){
@@ -35,11 +38,20 @@ const Register = () => {
     if(!name.match(nameReg)){
       return toast.error("only charchter is allowed in name");
     }
+    // if(!phone.match(emailReg)){
+    //   return toast.error("Invalid email");
+    // }
     if(!phone.match(phoneReg)){
       return toast.error("Invalid mobile number");
     }
     if(!password.match(passReg)){
       return toast.error("Atleast 1 digit, 1 character, 1 sepecial character & length 8-20 in password");
+    }
+    if(!address.match(addressReg)){
+      return toast.error("only charchter, digit, koma, dot, highpen is allowed in name");
+    }
+    if(!answer.match(answerReg)){
+      return toast.error("only charchter, digit, koma, dot, highpen is allowed in name");
     }
     else{
       handleSubmit();
